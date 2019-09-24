@@ -12,6 +12,12 @@ let swig = require('swig');
 //创建app应用   NodeJS   Http.createServer()
 let app = express();
 
+//设置静态文件托管
+
+//当用户url以/public开始，直接返回dirname+'/public'下的文件
+app.use('/public', express.static(__dirname + '/public'));
+
+
 //配置模板
 
 //定义当前应用所使用的模板引擎
@@ -54,6 +60,23 @@ app.get('/', function (erq, res, next) {
 })
 
 
+//设置CSS文件
+// app.get('/main.css', function (req, res, next) {
+//   res.setHeader('content-type', 'text/css');
+//   res.send("body {background:red;}")
+// })
+
+
 //监听请求
 app.listen(8181);
 
+
+
+/**
+ * 用户发送http请求 ->  url  -> 解析路由  ->  找到匹配规则  ->  执行指定的绑定函数，返回对应内容至用户
+ *
+ * /public 静态  直接读取指定目录下的文件，返回给用户
+ *
+ * 动态  ->  处理业务逻辑，加载模板，解析模板并返回数据到用户
+ *
+ * */
