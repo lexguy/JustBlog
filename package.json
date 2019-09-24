@@ -1,0 +1,27 @@
+{
+  "name": "justblog",
+  "version": "1.0.0",
+  "description": "just a blog of nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lexguy/JustBlog.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lexguy/JustBlog/issues"
+  },
+  "homepage": "https://github.com/lexguy/JustBlog#readme",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie": "^0.4.0",
+    "express": "^4.17.1",
+    "markdown": "^0.5.0",
+    "mongoose": "^5.7.1",
+    "swig": "^1.4.2"
+  }
+}
