@@ -15,7 +15,7 @@ let app = express();
 //设置静态文件托管
 
 //当用户url以/public开始，直接返回dirname+'/public'下的文件
-app.use('/public', express.static(__dirname + '/public'));
+// app.use('/public', express.static(__dirname + '/public'));
 
 
 //配置模板
@@ -48,16 +48,16 @@ swig.setDefaults({
  * res   response对象
  * next  函数
  * */
-app.get('/', function (erq, res, next) {
-
-  // res.send('<h1>My first blog</h1>')
-
-  //读取views下的指定文件，解析并返回给客户端
-  //param1   模板的文件，相对于views目录
-  //param2   传递给模板使用的数据
-  res.render('index');
-
-})
+// app.get('/', function (erq, res, next) {
+//
+//   // res.send('<h1>My first blog</h1>')
+//
+//   //读取views下的指定文件，解析并返回给客户端
+//   //param1   模板的文件，相对于views目录
+//   //param2   传递给模板使用的数据
+//   res.render('index');
+//
+// })
 
 
 //设置CSS文件
@@ -67,9 +67,15 @@ app.get('/', function (erq, res, next) {
 // })
 
 
+//根据不通功能划分模块
+
+app.use('/admin', require('./routers/admin'));
+app.use('/api', require('./routers/api'));
+// app.use('/', require('./routers/main'))
+
+
 //监听请求
 app.listen(8181);
-
 
 
 /**
@@ -79,4 +85,7 @@ app.listen(8181);
  *
  * 动态  ->  处理业务逻辑，加载模板，解析模板并返回数据到用户
  *
+ *
+ *
+ * 使用 use 进行模块划分
  * */
